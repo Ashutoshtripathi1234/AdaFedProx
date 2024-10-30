@@ -1,15 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
 
-# In[1]:
-
-
-import os
-gpu=int(input("Which gpu number you would like to allocate:"))
-os.environ["CUDA_VISIBLE_DEVICES"]=str(gpu)
-
-
-# In[2]:
 
 
 
@@ -33,13 +22,7 @@ from tensorflow.keras.layers import Flatten
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.optimizers import SGD
 from tensorflow.keras import backend as K
-# !pip install fl_implementation_utils
 
-# from fl_implementation_utils import *
-    
-
-
-# In[3]:
 
 
 def create_clients(data_dict):
@@ -56,7 +39,6 @@ def create_clients(data_dict):
     return data_dict
 
 
-# In[4]:
 
 
 import tensorflow as tf
@@ -84,7 +66,6 @@ class SimpleMLP:
         return model2
 
 
-# In[6]:
 
 
 
@@ -100,7 +81,6 @@ def test_model(X_test, Y_test,  model, comm_round):
     return accuracy, loss
 
 
-# In[7]:
 
 
 def avg_weights(scaled_weight_list):
@@ -120,7 +100,6 @@ def avg_weights(scaled_weight_list):
     return avg_grad
 
 
-# In[8]:
 
 
 import numpy as np
@@ -135,7 +114,6 @@ label4=np.load("label4.npy")
 print("import sucessfull")
 
 
-# In[9]:
 
 
 # test1=np.load("test1.npy")
@@ -149,7 +127,6 @@ one_hot_labels=np.load("one_hot_labels.npy")
 print("import sucessfull")
 
 
-# In[11]:
 
 
 test=test/255
@@ -160,7 +137,7 @@ train4=train4/255
 # test1=test1/255
 
 
-# In[12]:
+
 
 
 client_data1 = {
@@ -183,20 +160,19 @@ client_data2 = {
 clients_batched = create_clients(client_data2)
 
 
-# In[5]:
 
 
 smlp_local = SimpleMLP()
 global_model = smlp_local.build()
 
 
-# In[5]:
+
 
 
 global_model.summary()
 
 
-# In[3]:
+
 
 
 import random
@@ -298,7 +274,6 @@ class DQNAgent:
 
 
 
-# In[4]:
 
 
 num_clients=4
@@ -309,20 +284,6 @@ action_low = 0.0
 action_high = 1.0
 fedprox= DQNAgent(state_size, action_size, action_low, action_high)
 
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[5]:
 
 
 import numpy as np
@@ -342,7 +303,6 @@ def calculate_pk(Nk, N):
 
 
 
-# In[9]:
 
 
 
@@ -358,7 +318,6 @@ Nk4=sum(Nc4)
 N=Nk1+Nk2+Nk3+Nk4
 
 
-# In[10]:
 
 
 E1=calculate_Ek(Nc1, Nk1)
@@ -367,7 +326,7 @@ E3=calculate_Ek(Nc3, Nk3)
 E4=calculate_Ek(Nc4, Nk4)
 
 
-# In[11]:
+
 
 
 P1=calculate_pk(Nk1, N)
@@ -375,14 +334,6 @@ P2=calculate_pk(Nk2, N)
 P3=calculate_pk(Nk3, N)
 P4=calculate_pk(Nk4, N)
 
-
-# In[ ]:
-
-
-
-
-
-# In[12]:
 
 
 states=[[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5],[1,2,3,4,5]]
@@ -412,7 +363,7 @@ states[3][3]=0
 states[3][4]=0
 
 
-# In[13]:
+
 
 
 states=np.array(states)
@@ -421,13 +372,9 @@ states=states.reshape(-1,1)
 print(states.shape)
 
 
-# In[ ]:
 
 
 
-
-
-# In[14]:
 
 
 def calculate_fedprox_regularization(global_model, local_model, mu):
@@ -441,7 +388,6 @@ def calculate_fedprox_regularization(global_model, local_model, mu):
     return regularization_term
 
 
-# In[15]:
 
 
 states=np.array(states)
@@ -458,14 +404,14 @@ states=states.reshape(1,20)
 print(states.shape)
 
 
-# In[17]:
+
 
 
 states=states.flatten()
 print(states[3])
 
 
-# In[18]:
+
 
 
 # # states=np.array(states)
@@ -478,19 +424,16 @@ print(states[3])
 # states = scaler.fit_transform(states)
 
 
-# In[19]:
 
 
 states.shape
 
 
-# In[20]:
 
 
 client_names = list(clients_batched.keys())
 
 
-# In[ ]:
 
 
 acc=[]
@@ -498,7 +441,7 @@ for i in range(60):
     acc.append(i)
 
 
-# In[ ]:
+
 
 
 # num_comm_rounds =60
@@ -678,7 +621,7 @@ for i in range(60):
 #     return acc            
 
 
-# In[58]:
+
 
 
 # def training(states, acc):
@@ -776,13 +719,12 @@ for i in range(60):
 #     return acc
 
 
-# In[28]:
 
 
 import matplotlib.pyplot as plt
 
 
-# In[93]:
+
 
 
 import numpy as np
@@ -895,21 +837,17 @@ for comm_round in range(num_comm_rounds):
     plt.show
 
 
-# In[ ]:
+
 
 
 # accuracy=training(states,acc)
 
-
-# In[95]:
 
 
 import matplotlib.pyplot as plt
 plt.plot(accuracy)
 # accuracy
 
-
-# In[30]:
 
 
 # new_agent= DQNAgent(state_size, action_size, action_low, action_high)
@@ -951,14 +889,6 @@ predicted_mu = fedprox.model.predict(np.array([states]))
 print("Predicted mu value:", predicted_mu)
 
 
-# In[ ]:
-
-
-
-
-
-# In[96]:
-
 
 import pickle
 # Save the DQN agent
@@ -966,7 +896,6 @@ with open("fedprox_new_full.pkl", "wb") as file:
     pickle.dump(fedprox, file)
 
 
-# In[28]:
 
 
 import pickle
@@ -974,7 +903,6 @@ with open("fedprox_new_full.pkl", "rb") as file:
     fedprox = pickle.load(file)
 
 
-# In[31]:
 
 
 acc1 = []  # Replace with the actual initialization
@@ -1074,148 +1002,12 @@ for step in range(50):
     state = new_state
 
 
-# In[30]:
-
-
-# import matplotlib.pyplot as plt
-# acc1 = []
-# acc1 = training(states,acc1)
-import matplotlib.pyplot as plt
-
-
-# In[45]:
-
-
-plt.plot(acc1)
-
-
-# In[32]:
-
-
-global_model.evaluate(test,one_hot_labels)
-
-
-# In[99]:
-
-
-from sklearn.metrics import accuracy_score, cohen_kappa_score, matthews_corrcoef, f1_score
-from sklearn.metrics import balanced_accuracy_score, confusion_matrix, precision_score, recall_score, roc_auc_score
-
-# Assuming you have predictions and true labels
-y_true = one_hot_labels  # Replace with your true labels
-y_pred = global_model.predict(test)
-y_true = np.argmax(y_true, axis=1)
-y_pred = np.argmax(y_pred, axis=1)
-
-# Calculate Accuracy
-acc4 = accuracy_score(y_true, y_pred)
-
-# Calculate Cohen's Kappa
-kappa = cohen_kappa_score(y_true, y_pred)
-
-# Calculate Matthews Correlation Coefficient
-mcc = matthews_corrcoef(y_true, y_pred)
-
-# Calculate Balanced Accuracy
-bacc = balanced_accuracy_score(y_true, y_pred)
-
-# Calculate F1 Score
-f1 = f1_score(y_true, y_pred, average='weighted')  # Use 'weighted' for multiclass
-
-# Calculate Precision for multiclass
-precision = precision_score(y_true, y_pred, average='weighted')
-
-# Calculate Recall for multiclass
-recall = recall_score(y_true, y_pred, average='weighted')
-
-
-
-# # Calculate AUC (Area Under the Curve)
-# # roc_auc = roc_auc_score(y_true, y_pred, average='weighted')
-
-# # Create a confusion matrix
-# conf_matrix = confusion_matrix(y_true, y_pred)
-
-# # Calculate Geometric Mean from the confusion matrix
-# # tn, fp, fn, tp, = conf_matrix.ravel()
-# # g_mean = (tp / (tp + fn)) * (tn / (tn + fp))**0.5
-
-# # Print or use these metrics as needed
-print("Accuracy:", acc4)
-print("Cohen's Kappa:", kappa)
-print("Matthews Correlation Coefficient:", mcc)
-print("Balanced Accuracy:", bacc)
-print("F1 Score:", f1)
-print("Precision:", precision)
-print("Recall:", recall)
-# print("AUC (Area Under the Curve):", roc_auc)
-# print("Geometric Mean:", g_mean)
-from sklearn.metrics import roc_auc_score
-
-# Assuming you have true labels and predicted probabilities for each class
-y_true = one_hot_labels # Replace with your true labels
-y_prob = global_model.predict(test) # Replace with your predicted probabilities
-
-# # Calculate AUC for multiclass classification
-auc = roc_auc_score(y_true, y_prob, average='weighted')
-
-# # Print or use the AUC value as needed
-print("AUC (Area Under the Curve):", auc)
-from sklearn.metrics import confusion_matrix
-import numpy as np
-
-# Assuming you have true labels and predicted labels for multiclass classification
-y_true = one_hot_labels  # Replace with your true labels
-y_pred = global_model.predict(test)  # Replace with your predicted labels
-
-# Convert true and predicted labels to class labels (not one-hot encoded)
-y_true = np.argmax(y_true, axis=1)
-y_pred = np.argmax(y_pred, axis=1)
-
-# Calculate G-Mean for each class
-class_g_means = []
-for class_label in range(5):  # Replace num_classes with the number of classes
-    # Create a binary confusion matrix for the current class
-    true_class = (y_true == class_label)
-    pred_class = (y_pred == class_label)
-    tn, fp, fn, tp = confusion_matrix(true_class, pred_class).ravel()
-
-    # Calculate Sensitivity (True Positive Rate) and Specificity (True Negative Rate)
-    sensitivity = tp / (tp + fn)
-    specificity = tn / (tn + fp)
-
-    # Calculate G-Mean for the current class
-    g_mean = np.sqrt(sensitivity * specificity)
-
-    class_g_means.append(g_mean)
-
-# Calculate the overall G-Mean (geometric mean of class G-Means)
-overall_g_mean = np.prod(class_g_means) ** (1 / len(class_g_means))
-
-# Print or use the overall G-Mean as needed
-print("Overall G-Mean:", overall_g_mean)
-
-
-# In[97]:
-
-
-# acc 
-acccc=np.array(accuracy)
-
-
-# In[98]:
-
-
-np.save("acc_adaptfedprox_full_newstraggler.npy",acccc)
-
-
-# In[100]:
 
 
 global_model.save("adaptfedprox(full_new).h5")
 
 
-# In[ ]:
+
 
 
 
