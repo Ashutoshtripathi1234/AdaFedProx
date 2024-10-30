@@ -5,8 +5,8 @@ This repository includes the source code for paper entitled: "AdaFedProx: A Hete
 ## Architecture
 
 <p align="center">
-  <img src="archi1.png" alt="Architecture 1" width="50%" style="margin-right: 5px;">
-  <img src="archi2.png" alt="Architecture 2" width="50%">
+  <img src="archi1.png" alt="Architecture 1" width="45%" style="margin-right: 5px;">
+  <img src="archi2.png" alt="Architecture 2" width="45%">
 </p>
 
 
