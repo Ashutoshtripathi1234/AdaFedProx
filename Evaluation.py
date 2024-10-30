@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
 
-# In[ ]:
 
 
 from sklearn.metrics import accuracy_score, cohen_kappa_score, matthews_corrcoef, f1_score
