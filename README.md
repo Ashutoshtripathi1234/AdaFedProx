@@ -2,7 +2,8 @@
 This repository includes the source code for paper entitled: "AdaFedProx: A Heterogeneity-aware Federated Deep Reinforcement Learning for Medical Image Classification" published in IEEE Transactions on Consumer Electronics.
 
 
-![Architecture](Architecture.png)
+![Architecture](archi1.png)
+![Architecture](archi2.png)
 
 
 
