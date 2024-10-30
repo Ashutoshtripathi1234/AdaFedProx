@@ -37,6 +37,8 @@ After done with above process, you can run the AdaFedProx(Proposed).py, our prop
 After federated training, run Evaluation.py to acess the evaluation metrics such as accuracy, precision, recall etc.
 
 ## Citation
+
+```bibtex
 @ARTICLE{10681112,
   author={Sahoo, Pranab and Tripathi, Ashutosh and Saha, Sriparna and Mondal, Samrat and Singh, Jyoti Prakash and Sharma, Bhisham},
   journal={IEEE Transactions on Consumer Electronics}, 
@@ -45,6 +47,7 @@ After federated training, run Evaluation.py to acess the evaluation metrics such
   volume={},
   number={},
   pages={1-1},
-  keywords={Biomedical imaging;Training;Data models;Adaptation models;Servers;Medical services;Biological system modeling;Federated learning;medical image classification;heterogeneity;reinforcement learning},
-  doi={10.1109/TCE.2024.3461849}}
+  keywords={Biomedical imaging; Training; Data models; Adaptation models; Servers; Medical services; Biological system modeling; Federated learning; medical image classification; heterogeneity; reinforcement learning},
+  doi={10.1109/TCE.2024.3461849}
+}
 
