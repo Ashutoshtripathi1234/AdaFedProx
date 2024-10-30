@@ -19,25 +19,27 @@ In the realm of smart healthcare, vast amounts of valuable patient data are gene
 Please download the ISIC 2018 using this  [link](https://challenge.isic-archive.com/data/#2018) and Messidor dataset using this [link](https://www.adcis.net/en/third-party/messidor/). The CIFAR10 dataset can be used by importing from tf_datasets.
 
 ## Data Preparing
-To divide the dataset into the aprequired no. of clients, divide the data into training, validation and testing set as mentioned in the paper, then run non_iid_data_preparation.py and choose the required dataset (ISIC 2018 and Messidor) and then change the degree of heterogenity (eta) as required. you will get the desired distribution for each client.
+To divide the dataset into the aprequired no. of clients, divide the data into training, validation and testing set as mentioned in the paper, then run Data_creation.py and choose the required dataset (ISIC 2018 and Messidor). you will get the desired distribution for each client.
 
 ## Model Structure
 To choose the pretrained model, run model.py.
 
-## Run FedMRL
+## Run AdaFedProx
 
-After done with above process, you can run the FedMRL, our proposed method.
+After done with above process, you can run the AdaFedProx(Proposed).py, our proposed method.
 
 ## Evaluation
 After federated training, run Evaluation.py to acess the evaluation metrics such as accuracy, precision, recall etc.
 
 ## Citation
-@misc{sahoo2024fedmrldataheterogeneityaware,<br>
-      title={FedMRL: Data Heterogeneity Aware Federated Multi-agent Deep Reinforcement Learning for Medical Imaging}, <br>
-      author={Pranab Sahoo and Ashutosh Tripathi and Sriparna Saha and Samrat Mondal},<br>
-      year={2024},<br>
-      eprint={2407.05800},<br>
-      archivePrefix={arXiv},<br>
-      primaryClass={cs.LG},<br>
-      url={https://arxiv.org/abs/2407.05800}, <br>
-}
+@ARTICLE{10681112,
+  author={Sahoo, Pranab and Tripathi, Ashutosh and Saha, Sriparna and Mondal, Samrat and Singh, Jyoti Prakash and Sharma, Bhisham},
+  journal={IEEE Transactions on Consumer Electronics}, 
+  title={AdaFedProx: A Heterogeneity-Aware Federated Deep Reinforcement Learning for Medical Image Classification}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1-1},
+  keywords={Biomedical imaging;Training;Data models;Adaptation models;Servers;Medical services;Biological system modeling;Federated learning;medical image classification;heterogeneity;reinforcement learning},
+  doi={10.1109/TCE.2024.3461849}}
+
